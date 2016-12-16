@@ -1,0 +1,8 @@
+#!/bin/bash
+NOTIF_ID=50
+
+pactl set-sink-volume 1 -5%
+
+x=$(pactl list sinks | perl -000ne 'if(/#1/){/(Volume:.*)/; print "$1\n"}' | awk -F'/' '$0=$2' | sed 's/^[ \t ]*//;s/[ \t ]*$//')
+
+notify-send.sh --replace=$NOTIF_ID "" "$x"

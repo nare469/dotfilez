@@ -1,0 +1,13 @@
+#!/bin/bash
+NOTIF_ID=50
+
+pactl set-sink-mute 1 toggle
+
+x=$(pactl list sinks | perl -000ne 'if(/#1/){/(Mute:.*)/; print "$1\n"}' | awk '{print $2}')
+
+
+if [ "$x" == "no" ]; then
+    notify-send --replace=$NOTIF_ID "" "Unmuted"
+else
+    notify-send --replace=$NOTIF_ID "" "Muted"
+fi

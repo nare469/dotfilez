@@ -1,0 +1,4 @@
+function cl
+  clear
+end
+

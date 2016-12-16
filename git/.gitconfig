@@ -1,0 +1,27 @@
+[alias]
+  a = add
+  aA = add -A
+  ap = add -p
+  br = branch
+  ci = commit
+  cia = commit --amend
+  cin = commit --amend --no-edit
+  co = checkout
+  cob = checkout -b
+  com = checkout master
+  df = diff
+  ds = diff --staged
+  g = grep
+  gi = grep -i
+  lp = log -p
+  ls = show --name-only HEAD
+  rb = rebase
+  rbi = rebase -i
+  st = status
+[user]
+	name = Narendran Srinivasan
+	email = nare469@gmail.com
+[core]
+	editor = vim
+[push]
+	default = simple

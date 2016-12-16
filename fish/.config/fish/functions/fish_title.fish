@@ -1,0 +1,1 @@
+/home/naren/.config/fisherman/bobthefish/fish_title.fish
