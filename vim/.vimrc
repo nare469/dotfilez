@@ -87,6 +87,7 @@ set pastetoggle=<F2>
 
 set backspace=indent,eol,start
 cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
+cnoreabbrev <expr> Q ((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q'):('Q'))
 
 "Make splitting work better
 set splitright
