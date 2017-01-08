@@ -30,7 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Shift+Return exec gnome-terminal
+bindsym $mod+Shift+Return exec terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -175,16 +175,20 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+
+set $blue       "#196684"
+set $lightblue  "#1BB1FD"
+set $yellow     "#F4BE5E"
 bar {
         i3bar_command i3bar -t
         status_command i3status -c ~/.config/i3/i3status.conf
         tray_output primary
         colors {
-            background          "#196684"
-            focused_workspace   "#1BB1FD" "#1BB1FD" "#F4BE5E"
-            active_workspace    "#196684" "#196684" "#F4BE5E"
-            inactive_workspace  "#196684" "#196684" "#F4BE5E"
-            urgent_workspace    "#F4BE5E" "#F4BE5E" "#196684"
+            background          $blue
+            focused_workspace   $lightblue $lightblue $yellow
+            active_workspace    $blue $blue $yellow
+            inactive_workspace  $blue $blue $yellow
+            urgent_workspace    $yellow $yellow $blue
         }
 }
 
@@ -220,5 +224,44 @@ assign [class="Spotify"] $ws4
 new_window pixel 1
 
 gaps inner 10
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+    bindsym o      mode "$mode_gaps_outer"
+    bindsym i      mode "$mode_gaps_inner"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+
+}
+
+mode "$mode_gaps_inner" {
+    bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     gaps inner current set 0
+
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     gaps inner all set 0
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+    bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     gaps outer current set 0
+
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     gaps outer all set 0
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 popup_during_fullscreen leave_fullscreen
