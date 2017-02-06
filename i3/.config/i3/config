@@ -186,6 +186,7 @@ bindsym $mod+r mode "resize"
 set $blue       "#196684"
 set $lightblue  "#1BB1FD"
 set $yellow     "#F4BE5E"
+set $black      "#000000"
 bar {
         i3bar_command i3bar -t
         status_command i3status
@@ -198,6 +199,8 @@ bar {
             urgent_workspace    $yellow $yellow $blue
         }
 }
+
+client.focused $blue $blue $yellow $blue $blue
 
 bindsym $mod+Shift+x exec i3lock-fancy
 

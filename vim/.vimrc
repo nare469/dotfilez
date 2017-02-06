@@ -39,6 +39,7 @@ Plugin 'wilsaj/chuck.vim'
 Plugin 'isRuslan/vim-es6'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'rust-lang/rust.vim'
+Plugin 'dart-lang/dart-vim-plugin'
 
 " Color schemes
 Plugin 'marcopaganini/termschool-vim-theme'
