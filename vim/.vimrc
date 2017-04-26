@@ -11,52 +11,45 @@ nnoremap <leader>c :CtrlPClearCache<CR>
 nnoremap <leader>h :nohlsearch<CR>
 nmap <tab> gt
 nmap <s-tab> gT
+" Window navigation
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-"let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
-Plugin 'Lokaltog/vim-powerline'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'editorconfig/editorconfig-vim'
+Plug 'Lokaltog/vim-powerline'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
+Plug 'jiangmiao/auto-pairs'
+Plug 'vim-airline/vim-airline'
 
-" Syntax Highlighting
-Plugin 'dag/vim-fish'
-Plugin 'eslint/eslint'
-Plugin 'fatih/vim-go'
-Plugin 'groenewege/vim-less'
-Plugin 'skammer/vim-css-color'
-Plugin 'wilsaj/chuck.vim'
-Plugin 'isRuslan/vim-es6'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'rust-lang/rust.vim'
-Plugin 'dart-lang/dart-vim-plugin'
+" Syntax Hhlighting
+Plug 'dag/vim-fish'
+Plug 'eslint/eslint'
+Plug 'fatih/vim-go'
+Plug 'isRuslan/vim-es6'
+Plug 'kchmck/vim-coffee-script'
+Plug 'rust-lang/rust.vim'
+Plug 'dart-lang/dart-vim-plugin'
 
 " Color schemes
-Plugin 'marcopaganini/termschool-vim-theme'
-Plugin 'alessandroyorba/sierra'
+Plug 'marcopaganini/termschool-vim-theme'
+Plug 'alessandroyorba/sierra'
 
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-call vundle#end()
+function! BuildYCM(info)
+  if a:info.status == 'installed' || a:info.force
+    !./install.sh
+  endif
+endfunction
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+call plug#end()
 
 set nocompatible
 set ruler
@@ -130,16 +123,20 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " YCM conf file
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
-" Cursor changes (iTerm)
-if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
-
 " Copy/Paste and move to line end
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
+
+" FZF Settings
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~30%' }
+
+nnoremap <C-p> :FZF<CR>
