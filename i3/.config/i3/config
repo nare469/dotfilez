@@ -36,10 +36,7 @@ bindsym $mod+Shift+Return exec terminator
 bindsym $mod+Shift+q kill
 
 # start rofidmenu (a program launcher)
-bindsym $mod+p exec rofi -show run \
-    -lines 3 -eh 2 -fullscreen -padding 300 -hide-scrollbar \
-    -separator-style none -opacity "85" -bw 0 \
-    -color-enabled true
+bindsym $mod+p exec rofi -show drun -modi drun
 
 # change focus
 bindsym $mod+h focus left
