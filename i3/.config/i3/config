@@ -177,27 +177,29 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Use wal (https://github.com/dylanaraps/wal) to get colour schemes
+set_from_resource $background  i3wm.color1
+set_from_resource $urgent      i3wm.color4
+set_from_resource $active      i3wm.color2
+set_from_resource $text        i3wm.color6
 
-set $blue       "#196684"
-set $lightblue  "#1BB1FD"
-set $yellow     "#F4BE5E"
-set $black      "#000000"
+set $black       "#000000"
+set $transparent "#00000000"
+
 bar {
         i3bar_command i3bar -t
-        status_command i3status
+        status_command i3blocks
         tray_output primary
         colors {
-            background          $blue
-            focused_workspace   $lightblue $lightblue $yellow
-            active_workspace    $blue $blue $yellow
-            inactive_workspace  $blue $blue $yellow
-            urgent_workspace    $yellow $yellow $blue
+            background          $transparent
+            focused_workspace   $active $active $text
+            active_workspace    $transparent $transparent $text
+            inactive_workspace  $transparent $transparent $text
+            urgent_workspace    $urgent $urgent $text
         }
 }
 
-client.focused $blue $blue $yellow $blue $blue
+client.focused $acive $active $text $active $active
 
 bindsym $mod+Shift+x exec i3lock-fancy
 
@@ -216,18 +218,15 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Default applications
-exec gnome-terminal
+exec terminator
 exec_always compton
 exec_always xsslock -- i3lock-fancy
-exec_always feh --bg-scale /home/naren/Pictures/gJB0DJs.jpg
-exec /home/naren/.config/i3/spotify_notification.py
 
 # Open on default workspace
 
 assign [class="google-chrome"] $ws2
 assign [class="Spotify"] $ws4
 assign [class="Steam"] $ws9
-
 
 new_window pixel 1
 
