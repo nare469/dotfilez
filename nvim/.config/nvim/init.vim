@@ -110,16 +110,19 @@ set rnu
 let g:ctrlp_working_path_mode = 'ra'
 
 " Remove extra whitespace before saving
+let s:can_strip = 0
 function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
+    if s:can_strip
+        " Preparation: save last search, and cursor position.
+        let _s=@/
+        let l = line(".")
+        let c = col(".")
+        " Do the business:
+        %s/\s\+$//e
+        " Clean up: restore previous search history, and cursor position
+        let @/=_s
+        call cursor(l, c)
+    endif
 endfunction
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
