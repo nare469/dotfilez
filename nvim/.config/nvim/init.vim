@@ -22,6 +22,7 @@ map <C-l> <C-W>l
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'editorconfig/editorconfig-vim'
 Plug 'Lokaltog/vim-powerline'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -42,6 +43,7 @@ Plug 'dart-lang/dart-vim-plugin'
 " Color schemes
 Plug 'marcopaganini/termschool-vim-theme'
 Plug 'alessandroyorba/sierra'
+Plug 'dylanaraps/wal'
 
 function! BuildYCM(info)
   if a:info.status == 'installed' || a:info.force
@@ -103,7 +105,8 @@ noremap <right> <nop>
 set undofile
 set undodir=~/.vimundo/
 
-colorscheme sierra
+" Use 'wal' (https://github.com/dylanaraps/wal) to get colour schemes
+colorscheme wal
 set t_Co=256
 set rnu
 
