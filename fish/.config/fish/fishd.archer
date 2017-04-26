@@ -28,6 +28,7 @@ SET fish_pager_color_completion:normal
 SET fish_pager_color_description:555\x1eyellow
 SET fish_pager_color_prefix:cyan
 SET fish_pager_color_progress:cyan
+SET fish_user_paths:/home/naren/\x2efzf/bin
 SET fisher_active_prompt:bobthefish
 SET fisher_dependency_count:bobthefish
 SET yimmy_solarized:true

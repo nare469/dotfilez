@@ -25,3 +25,5 @@
 	editor = vim
 [push]
 	default = simple
+[color]
+	ui = auto
