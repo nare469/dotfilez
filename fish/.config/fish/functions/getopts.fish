@@ -1,0 +1,1 @@
+/Users/naren/.config/fisherman/getopts/getopts.fish

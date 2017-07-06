@@ -1,4 +1,1 @@
-function fish_mode_prompt
-    # Disable vi prompt
-end
-
+/Users/naren/.config/fisherman/bobthefish/fish_mode_prompt.fish

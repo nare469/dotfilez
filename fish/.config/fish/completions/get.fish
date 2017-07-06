@@ -1,0 +1,1 @@
+/Users/naren/.config/fisherman/get/completions/get.fish

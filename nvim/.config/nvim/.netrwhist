@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/naren/sigopt-api/.git/hooks'
+let g:netrw_dirhist_2='/Users/naren/sigopt-api/web/js/pages/gallery/algorithms'
+let g:netrw_dirhist_3='/Users/naren/sigopt-api/web/js/pages/gallery/algorithms/python'
+let g:netrw_dirhist_4='/Users/naren/sigopt-api/web/js/pages/gallery/algorithms/python/mxnet'
+let g:netrw_dirhist_5='/Users/naren/sigopt-api/src/python/zigopt/handlers/clients/users'
+let g:netrw_dirhist_6='/Users/naren/sigopt-api/web/js/pages/site_admin/site_admin_client'
+let g:netrw_dirhist_7='/Users/naren/sigopt-api'

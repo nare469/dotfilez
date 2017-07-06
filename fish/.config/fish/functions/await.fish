@@ -1,0 +1,1 @@
+/Users/naren/.config/fisherman/await/functions/await.fish

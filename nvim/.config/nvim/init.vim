@@ -1,6 +1,3 @@
-let g:python_host_prog = '/usr/bin/python2'
-let g:python3_host_prog = '/usr/bin/python3'
-
 set shell=fish
 " Leader mappings
 let mapleader = " "
@@ -13,7 +10,6 @@ nnoremap <leader>> 2<C-w>>
 nnoremap <leader>c :CtrlPClearCache<CR>
 nnoremap <leader>h :nohlsearch<CR>
 nmap <tab> gt
-nmap <s-tab> gT
 " Window navigation
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -32,6 +28,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 
 " Syntax Hhlighting
+Plug 'vim-syntastic/syntastic'
+Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'dag/vim-fish'
 Plug 'eslint/eslint'
 Plug 'fatih/vim-go'
@@ -43,7 +41,6 @@ Plug 'dart-lang/dart-vim-plugin'
 " Color schemes
 Plug 'marcopaganini/termschool-vim-theme'
 Plug 'alessandroyorba/sierra'
-Plug 'dylanaraps/wal'
 
 function! BuildYCM(info)
   if a:info.status == 'installed' || a:info.force
@@ -76,8 +73,8 @@ set wildmenu
 
 set laststatus=2 "for powerline
 set expandtab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 set autoindent
 set smartindent
@@ -106,14 +103,14 @@ set undofile
 set undodir=~/.vimundo/
 
 " Use 'wal' (https://github.com/dylanaraps/wal) to get colour schemes
-colorscheme wal
+colorscheme sierra
 set t_Co=256
 set rnu
 
 let g:ctrlp_working_path_mode = 'ra'
 
 " Remove extra whitespace before saving
-let s:can_strip = 0
+let s:can_strip = 1
 function! <SID>StripTrailingWhitespaces()
     if s:can_strip
         " Preparation: save last search, and cursor position.
@@ -141,7 +138,7 @@ nnoremap <silent> p p`]
 " This is the default extra key bindings
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
+  \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 
 " Default fzf layout
@@ -149,3 +146,18 @@ let g:fzf_action = {
 let g:fzf_layout = { 'down': '~30%' }
 
 nnoremap <C-p> :FZF<CR>
+
+" Settings for work
+let g:python_recommended_style=0
+set ts=2
+set sw=2
+
+" Syntastic stuff
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_flake8_exec = 'python2'
+let g:syntastic_python_flake8_args = ['-m', 'flake8', '--ignore', 'E129,E127,E302,E131,E111,E114,E121,E501,E126,E123,E305,I101,I100,N806,F403,E241,E731,F999,F401,F405']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = '/Users/naren/sigopt-api/node_modules/.bin/eslint'
