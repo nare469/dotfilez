@@ -18,6 +18,7 @@ map <C-l> <C-W>l
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'xuhdev/vim-latex-live-preview'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Lokaltog/vim-powerline'
 Plug 'tpope/vim-endwise'

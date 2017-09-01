@@ -36,7 +36,7 @@ bindsym $mod+Shift+Return exec terminator
 bindsym $mod+Shift+q kill
 
 # start rofidmenu (a program launcher)
-bindsym $mod+p exec rofi -show drun -modi drun
+bindsym $mod+space exec rofi -show drun -modi drun
 
 # change focus
 bindsym $mod+h focus left
@@ -82,7 +82,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+p focus mode_toggle
 
 # movefloat mode
 mode "movefloat" {

@@ -1,9 +1,8 @@
-# autoenv
-set -g  AUTOENVFISH_FILE ".env"
-. ~/.config/fish/autoenv.fish
-
 # Enable vi mode
 set fish_key_bindings fish_vi_key_bindings
+
+# Disable default vi mode prompt
+function fish_mode_prompt; end
 
 # bobthefish configs
 set -g theme_display_vi yes

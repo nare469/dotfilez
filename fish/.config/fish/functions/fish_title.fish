@@ -1,1 +1,1 @@
-/Users/naren/.config/fisherman/bobthefish/fish_title.fish
+/home/naren/.config/fisherman/bobthefish/fish_title.fish
